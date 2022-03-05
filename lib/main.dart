@@ -51,14 +51,14 @@ class MyCustomFormState extends State<MyCustomForm> {
             decoration: const InputDecoration(
               icon: const Icon(Icons.phone),
               hintText: 'Enter a phone number',
-              labelText: 'Phone',
+              labelText: 'Phone Number',
             ),
           ),
           TextFormField(
             decoration: const InputDecoration(
               icon: const Icon(Icons.calendar_today),
               hintText: 'Enter your date of birth',
-              labelText: 'Dob',
+              labelText: 'Date of Birth',
             ),
           ),
           new Container(
