@@ -10,14 +10,17 @@ class MyApp extends StatelessWidget {
       title: appTitle,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        fontFamily: 'OoohBaby',
+        fontFamily: 'Open Sans',
       ),
       home: Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
           centerTitle: true,
         ),
-        body: MyCustomForm(),
+        body: Container(
+          margin: const EdgeInsets.only(left: 24.0, right: 24.0),
+          child: MyCustomForm(),
+        ),
       ),
     );
   }
@@ -67,10 +70,14 @@ class MyCustomFormState extends State<MyCustomForm> {
             ),
           ),
           new Container(
-              padding: const EdgeInsets.only(left: 150.0, top: 40.0),
-              child: new RaisedButton(
-                child: const Text('Submit'),
-                onPressed: null,
+              padding: const EdgeInsets.only(left: 200.0, top: 60.0),
+              child: new OutlinedButton(
+                style: ButtonStyle(
+                  foregroundColor:
+                      MaterialStateProperty.all<Color>(Colors.blue),
+                ),
+                onPressed: () {},
+                child: Text('Submit'),
               )),
         ],
       ),
