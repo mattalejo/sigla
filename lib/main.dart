@@ -8,11 +8,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = ThemeData();
     return MaterialApp(
         theme: ThemeData(
-            accentColor: Color.fromARGB(255, 60, 89, 126),
-            visualDensity: VisualDensity(horizontal: 0.6, vertical: 0.4)),
+            fontFamily: "Open",
+            visualDensity: const VisualDensity(horizontal: 0.6, vertical: 0.4),
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(secondary: const Color.fromARGB(255, 60, 89, 126))),
         home: Directory());
   }
 }
