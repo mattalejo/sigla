@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 // import 'package:dropdown_formfield/dropdown_formfield.dart';
 
@@ -15,6 +17,12 @@ class MyCustomFormState extends State<MyCustomForm> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
+  final controller_name = TextEditingController();
+  final controller_age = TextEditingController();
+  final controller_height = TextEditingController();
+  final controller_weight = TextEditingController();
+
+  TextEditingController dateCtl = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +37,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
+                  controller: controller_name,
                   textCapitalization: TextCapitalization.words,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
@@ -36,36 +45,73 @@ class MyCustomFormState extends State<MyCustomForm> {
                     hintText: 'Enter your name',
                     labelText: 'Name',
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your name';
+                    }
+                  return null;
+                  },
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  keyboardType: TextInputType.datetime,
+                  controller: controller_age,
                   decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.cake),
-                      hintText: "MM/DD/YYYY",
-                      labelText: "Date of birth"),
+                      labelText: "Date of Birth"),
+                      onTap: () async{
+                        DateTime date = DateTime(1900);
+                        FocusScope.of(context).requestFocus(FocusNode());
+
+                        date = (await showDatePicker(
+                                      context: context, 
+                                      initialDate:DateTime.now(),
+                                      firstDate:DateTime(1900),
+                                      lastDate: DateTime(2100)))!;
+
+                        controller_age.text = "${date.day}-${date.month}-${date.year}";
+                        
+                        },
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your date of birth';
+                    }
+                  return null;
+                  },
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  keyboardType: TextInputType.number,
+                  controller: controller_height,
+                  keyboardType:  const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.square_foot),
                     hintText: 'Enter height in centimeters',
                     labelText: 'Height',
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your height';
+                    }
+                  return null;
+                  },
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  keyboardType: TextInputType.number,
-                  textInputAction: TextInputAction.send,
+                  controller: controller_weight,
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.scale),
                     hintText: 'Enter weight in kilograms',
                     labelText: 'Weight',
                   ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter your weight';
+                    }
+                  return null;
+                  },
                 ),
                 Container(
                     padding: const EdgeInsets.only(top: 16),
@@ -74,11 +120,27 @@ class MyCustomFormState extends State<MyCustomForm> {
                         minWidth: 200,
                         height: 64,
                         child: OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                                  // Validate returns true if the form is valid, or false otherwise.
+                              if (_formKey.currentState!.validate()) {
+                                // If the form is valid, display a snackbar. In the real world,
+                                // you'd often call a server or save the information in a database.
+
+                                  final valueName = controller_name.text;
+                                  final valueAge = controller_age.text;
+                                  final valueHeight = controller_height.text;
+                                  final valueWeight = controller_weight.text;
+
+                                  num bmi = num.parse(valueWeight)/(pow((num.parse(valueHeight)*0.01),2));
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('BMI: ${bmi}')),
+                                  );
+                              }
+                            },
                             child: RichText(
                               text: const TextSpan(
                                 children: [
-                                  WidgetSpan(
+                                   WidgetSpan(
                                     child: Icon(Icons.check, size: 16),
                                   ),
                                   TextSpan(
@@ -96,6 +158,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               ],
             ),
           ),
-        ));
+        )
+      );
   }
 }
