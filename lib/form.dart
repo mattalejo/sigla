@@ -24,7 +24,6 @@ class MyCustomFormState extends State<MyCustomForm> {
 
   TextEditingController dateCtl = TextEditingController();
 
-  @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
     return Scaffold(
@@ -38,8 +37,10 @@ class MyCustomFormState extends State<MyCustomForm> {
               children: <Widget>[
                 TextFormField(
                   controller: controller_name,
+                  textCapitalization: TextCapitalization.words,
                   decoration: const InputDecoration(
-                    icon: Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person),
                     hintText: 'Enter your name',
                     labelText: 'Name',
                   ),
@@ -50,14 +51,16 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return null;
                   },
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: controller_age,
                   decoration: const InputDecoration(
-                      icon: Icon(Icons.calendar_today),
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.cake),
                       labelText: "Date of Birth"),
                       onTap: () async{
                         DateTime date = DateTime(1900);
-                        FocusScope.of(context).requestFocus(new FocusNode());
+                        FocusScope.of(context).requestFocus(FocusNode());
 
                         date = (await showDatePicker(
                                       context: context, 
@@ -75,11 +78,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return null;
                   },
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: controller_height,
                   keyboardType:  const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
-                    icon: Icon(Icons.square_foot),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.square_foot),
                     hintText: 'Enter height in centimeters',
                     labelText: 'Height',
                   ),
@@ -90,11 +95,13 @@ class MyCustomFormState extends State<MyCustomForm> {
                   return null;
                   },
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   controller: controller_weight,
                   keyboardType: const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
-                    icon: Icon(Icons.scale),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.scale),
                     hintText: 'Enter weight in kilograms',
                     labelText: 'Weight',
                   ),

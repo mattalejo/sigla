@@ -10,8 +10,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         theme: ThemeData(
-          fontFamily: 'Open Sans',
-        ),
+            fontFamily: "Open",
+            visualDensity: const VisualDensity(horizontal: 0.6, vertical: 0.4),
+            colorScheme: ColorScheme.fromSwatch()
+                .copyWith(secondary: const Color.fromARGB(255, 60, 89, 126))),
         home: Directory());
   }
 }
