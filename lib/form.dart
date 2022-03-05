@@ -19,9 +19,9 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
-    return new Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
-        body: new Container(
+        body: Container(
           margin: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
           child: Form(
             key: _formKey,
@@ -29,45 +29,54 @@ class MyCustomFormState extends State<MyCustomForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 TextFormField(
+                  textCapitalization: TextCapitalization.words,
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.person),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.person),
                     hintText: 'Enter your name',
                     labelText: 'Name',
                   ),
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   keyboardType: TextInputType.datetime,
-                  decoration: InputDecoration(
-                      icon: Icon(Icons.calendar_today),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      prefixIcon: Icon(Icons.cake),
                       hintText: "MM/DD/YYYY",
-                      labelText: "Enter Date"),
+                      labelText: "Date of birth"),
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.square_foot),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.square_foot),
                     hintText: 'Enter height in centimeters',
                     labelText: 'Height',
                   ),
                 ),
+                const SizedBox(height: 8),
                 TextFormField(
                   keyboardType: TextInputType.number,
+                  textInputAction: TextInputAction.send,
                   decoration: const InputDecoration(
-                    icon: const Icon(Icons.scale),
+                    border: OutlineInputBorder(),
+                    prefixIcon: Icon(Icons.scale),
                     hintText: 'Enter weight in kilograms',
                     labelText: 'Weight',
                   ),
                 ),
                 Container(
-                    padding: EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(top: 16),
                     alignment: Alignment.center,
                     child: ButtonTheme(
                         minWidth: 200,
                         height: 64,
-                        child: new OutlinedButton(
+                        child: OutlinedButton(
                             onPressed: () {},
-                            child: new RichText(
-                              text: TextSpan(
+                            child: RichText(
+                              text: const TextSpan(
                                 children: [
                                   WidgetSpan(
                                     child: Icon(Icons.check, size: 16),
@@ -82,7 +91,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                               ),
                             ),
                             style: OutlinedButton.styleFrom(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 48, vertical: 16))))),
               ],
             ),

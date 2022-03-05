@@ -8,10 +8,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = ThemeData();
     return MaterialApp(
         theme: ThemeData(
-          fontFamily: 'Open Sans',
-        ),
+            accentColor: Color.fromARGB(255, 60, 89, 126),
+            visualDensity: VisualDensity(horizontal: 0.6, vertical: 0.4)),
         home: Directory());
   }
 }
