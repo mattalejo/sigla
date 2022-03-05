@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget{
-  const HomeScreen({Key? key}): super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   HomeScreenState createState() {
@@ -13,7 +13,7 @@ class HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   PageController pageController = PageController();
 
-  void onTapped(int index){
+  void onTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
@@ -21,18 +21,14 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      body: Container(
-        child: Align(
-          alignment: Alignment.center,
-            child: Text(
-              'Insert homepage',
-              textAlign: TextAlign.center,                          
-            ),
-          ),
-        )
-    );
-
+  Widget build(BuildContext context) {
+    return const Scaffold(
+        body: Align(
+      alignment: Alignment.center,
+      child: Text(
+        'Insert homepage',
+        textAlign: TextAlign.center,
+      ),
+    ));
   }
 }
