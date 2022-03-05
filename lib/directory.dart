@@ -26,10 +26,10 @@ class DirectoryState extends State<Directory> {
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      appBar: AppBar(title: Text("asd")),
+      appBar: AppBar(title: const Text("asd")),
       body: PageView(
         controller: pageController,
-        children: [
+        children: const [
           HomeScreen(),
           MyCustomForm(),
           DatabaseScreen()
@@ -42,7 +42,7 @@ class DirectoryState extends State<Directory> {
           BottomNavigationBarItem(icon: Icon(Icons.book), label: "Food Database"),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Color.fromARGB(255, 30, 92, 6),
+        selectedItemColor: const Color.fromARGB(255, 30, 92, 6),
         unselectedItemColor: Colors.grey,
         onTap: onTapped
       ),
