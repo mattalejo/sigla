@@ -8,9 +8,14 @@ class MyApp extends StatelessWidget {
     final appTitle = "Enter Child's Details";
     return MaterialApp(
       title: appTitle,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        fontFamily: 'OoohBaby',
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: Text(appTitle),
+          centerTitle: true,
         ),
         body: MyCustomForm(),
       ),
