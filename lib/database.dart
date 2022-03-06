@@ -15,16 +15,6 @@ class DatabaseScreen extends StatefulWidget {
 }
 
 class DatabaseScreenState extends State<DatabaseScreen> {
-  int _selectedIndex = 0;
-  PageController pageController = PageController();
-
-  void onTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    pageController.jumpToPage(index);
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

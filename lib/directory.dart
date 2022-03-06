@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'form.dart';
-import 'home.dart';
 import 'database.dart';
 
 class Directory extends StatefulWidget {
@@ -13,14 +12,13 @@ class Directory extends StatefulWidget {
 }
 
 class DirectoryState extends State<Directory> {
-  int _selectedIndex = 0;
-  PageController pageController = PageController();
+  int _currentIndex = 0;
+  final List<Widget> _children = [const MyCustomForm(),const DatabaseScreen()];
 
   void onTapped(int index) {
     setState(() {
-      _selectedIndex = index;
+      _currentIndex = index;
     });
-    pageController.jumpToPage(index);
   }
 
   @override
@@ -40,10 +38,7 @@ class DirectoryState extends State<Directory> {
           ),
           elevation: 0,
         ),
-        body: PageView(
-          controller: pageController,
-          children: [HomeScreen(), MyCustomForm(), DatabaseScreen()],
-        ),
+        body: IndexedStack(index: _currentIndex, children: _children),
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
               color: Colors.transparent,
@@ -51,12 +46,9 @@ class DirectoryState extends State<Directory> {
           child: BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.calculate), label: "Health"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.book), label: "Food Database"),
+                BottomNavigationBarItem( icon: Icon(Icons.book), label: "Food Database"),
               ],
-              currentIndex: _selectedIndex,
+              currentIndex: _currentIndex,
               selectedItemColor: const Color.fromARGB(255, 251, 129, 111),
               unselectedItemColor: Colors.grey,
               onTap: onTapped),
