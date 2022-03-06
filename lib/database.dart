@@ -3,7 +3,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-//import 'package:sqflite/sqflite.dart';
+import 'package:sqflite/sqflite.dart';
 
 class DatabaseScreen extends StatefulWidget {
   const DatabaseScreen({Key? key}) : super(key: key);
@@ -68,63 +68,117 @@ class DatabaseScreenState extends State<DatabaseScreen> {
   }
 }
 
+void foodData(BuildContext context) async {
+  var db = await openDatabase('data.db');
+  await db.execute('FROM');
+}
+
 Widget _buildList() {
   return ListView.builder(
       addAutomaticKeepAlives: false,
       shrinkWrap: true,
       itemBuilder: (_, i) => Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.rectangle,
-            border: Border.all(color: Colors.grey, width: 1),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-          padding: const EdgeInsets.only(bottom: 16, left: 8, right: 8, top: 8),
-          child: Container(
-              child: Column(
-            children: [
-              const Text("Kangkong",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 16,
-                  )),
-              Table(
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                children: [foodColumn(), foodData()],
-              ),
-            ],
-          ))));
+            padding: const EdgeInsets.only(left: 8, right: 8, top: 8),
+            margin: EdgeInsets.symmetric(vertical: 8),
+            child: OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  side: const BorderSide(width: 1.0, color: Colors.grey)),
+              onPressed: () {},
+              child: foodInfo(),
+            ),
+          ));
 }
 
-TableRow foodData() {
+class Food {
+  int id;
+  String name;
+  int servingSize;
+  String servingMeasurement;
+  String foodType;
+  double calories;
+  double carbs;
+  double protein;
+  double fat;
+  double price;
+  Food(
+      this.id,
+      this.name,
+      this.servingSize,
+      this.servingMeasurement,
+      this.foodType,
+      this.calories,
+      this.carbs,
+      this.protein,
+      this.fat,
+      this.price);
+  @override
+  String toString() {
+    return '{ ${this.id}, ${this.name}, ${this.servingSize}, ${this.servingMeasurement}, ${this.foodType}, ${this.calories}, ${this.carbs}, ${this.protein}, ${this.fat}, ${price}}';
+  }
+}
+
+class foodInfo extends StatelessWidget {
+  const foodInfo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(
+      children: [
+        const Text("Kangkong",
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.w700,
+              fontSize: 16,
+            )),
+        const SizedBox(height: 8),
+        Table(
+          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          children: [foodColumn(), foodNutrition()],
+        ),
+      ],
+    ));
+  }
+}
+
+TableRow foodNutrition() {
   return const TableRow(children: [
     Center(
         child: Text("10.7	kcal",
             style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 16,
             ))),
     Center(
         child: Text("1.75	g",
             style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 16,
             ))),
     Center(
         child: Text("1.46	g",
             style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 16,
             ))),
     Center(
         child: Text("0.112 g",
             style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 16,
             ))),
     Center(
         child: Text("P 1.35",
             style: TextStyle(
+              color: Colors.black,
               fontWeight: FontWeight.w700,
               fontSize: 16,
             ))),
