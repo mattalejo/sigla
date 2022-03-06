@@ -1,0 +1,21 @@
+ID,Food Name,Serving_Size,Serving_Measurement,Food_Type,Calories,Carbs,Protein,Fat,Price
+1,Kangkong,1,cup,Fruits Veg,10.7,1.75,1.46,0.112,1.35
+2,Alugbati,100,g,Fruits Veg,28,2.64,2.91,0.6,14
+3,Malunggay,100,g,Fruits Veg,64,8.28,2,1.4,19
+4,Apples,1,pc,Fruits Veg,72,19.06,0.36,0.23,15
+5,Onions,1,cup,Fruits Veg,67,16.18,1.47,0.13,25
+6,Potatoes,1,pc,Fruits Veg,174,32.33,2.77,4.01,21
+7,Carrots,1,pc,Fruits Veg,31,4.63,0.43,1.44,13.75
+8,Banana,1,pc,Fruits Veg,110,28,,,8
+9,White Rice,1,cup,Carbs,204,44,4.2,0.44,10.45
+10,Brown Rice,1,cup,Carbs,216,45,24,2,10.34
+11,Egg,1,pc,Proteins,78,0.6,7,5,7
+12,Canned Tuna,56,g,Proteins,90,0,13,4,11
+13,Tilapia,100,g,Proteins,126,0,7.41,0.75,26.8
+14,Bangus,100,g,Proteins,189,0,26.09,8.56,42.22
+15,Chicken Breast,100,g,Proteins,195,0,29.55,7.72,30
+16,Pork Steak,100,g,Proteins,236,0,17,18,39.4
+17,Sardines,56,g,Proteins,50,2,6,2,5.67
+18,Vegetable Oil,1,tbsp,Oils,120,0,0,14,1.47
+19,Extra Virgin Olive Oil,1,tbsp,Oils,119,0,0,13.5,10
+20,Milk,200,mL,Proteins,,11,6,6,19
