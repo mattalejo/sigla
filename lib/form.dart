@@ -49,7 +49,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your name';
                     }
-                  return null;
+                    return null;
                   },
                 ),
                 const SizedBox(height: 8),
@@ -59,30 +59,31 @@ class MyCustomFormState extends State<MyCustomForm> {
                       border: OutlineInputBorder(),
                       prefixIcon: Icon(Icons.cake),
                       labelText: "Date of Birth"),
-                      onTap: () async{
-                        DateTime date = DateTime(1900);
-                        FocusScope.of(context).requestFocus(FocusNode());
+                  onTap: () async {
+                    DateTime date = DateTime(1900);
+                    FocusScope.of(context).requestFocus(FocusNode());
 
-                        date = (await showDatePicker(
-                                      context: context, 
-                                      initialDate:DateTime.now(),
-                                      firstDate:DateTime(1900),
-                                      lastDate: DateTime(2100)))!;
+                    date = (await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(1900),
+                        lastDate: DateTime(2100)))!;
 
-                        controller_age.text = "${date.day}-${date.month}-${date.year}";
-                        
-                        },
+                    controller_age.text =
+                        "${date.day}-${date.month}-${date.year}";
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your date of birth';
                     }
-                  return null;
+                    return null;
                   },
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: controller_height,
-                  keyboardType:  const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.square_foot),
@@ -93,13 +94,14 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your height';
                     }
-                  return null;
+                    return null;
                   },
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
                   controller: controller_weight,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                  keyboardType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.scale),
@@ -110,7 +112,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     if (value == null || value.isEmpty) {
                       return 'Please enter your weight';
                     }
-                  return null;
+                    return null;
                   },
                 ),
                 Container(
@@ -121,26 +123,28 @@ class MyCustomFormState extends State<MyCustomForm> {
                         height: 64,
                         child: OutlinedButton(
                             onPressed: () {
-                                  // Validate returns true if the form is valid, or false otherwise.
+                              // Validate returns true if the form is valid, or false otherwise.
                               if (_formKey.currentState!.validate()) {
                                 // If the form is valid, display a snackbar. In the real world,
                                 // you'd often call a server or save the information in a database.
 
-                                  final valueName = controller_name.text;
-                                  final valueAge = controller_age.text;
-                                  final valueHeight = controller_height.text;
-                                  final valueWeight = controller_weight.text;
+                                final valueName = controller_name.text;
+                                final valueAge = controller_age.text;
+                                final valueHeight = controller_height.text;
+                                final valueWeight = controller_weight.text;
 
-                                  num bmi = num.parse(valueWeight)/(pow((num.parse(valueHeight)*0.01),2));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('BMI: ${bmi}')),
-                                  );
+                                num bmi = num.parse(valueWeight) /
+                                    (pow((num.parse(valueHeight) * 0.01), 2));
+                                num bmiTwo = num.parse(bmi.toStringAsFixed(2));
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('BMI: $bmiTwo')),
+                                );
                               }
                             },
                             child: RichText(
                               text: const TextSpan(
                                 children: [
-                                   WidgetSpan(
+                                  WidgetSpan(
                                     child: Icon(Icons.check, size: 16),
                                   ),
                                   TextSpan(
@@ -158,7 +162,6 @@ class MyCustomFormState extends State<MyCustomForm> {
               ],
             ),
           ),
-        )
-      );
+        ));
   }
 }

@@ -13,5 +13,5 @@ class LandingState extends State<Landing> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold();
-
+  }
 }

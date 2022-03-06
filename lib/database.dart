@@ -22,16 +22,43 @@ class DatabaseScreenState extends State<DatabaseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-      margin: EdgeInsets.only(left: 24, right: 24),
-      child: Align(
-        alignment: Alignment.center,
-        child: Text(
-          'Insert directory page',
-          textAlign: TextAlign.center,
-        ),
-      ),
-    ));
+    return DefaultTabController(
+        initialIndex: 1,
+        length: 4,
+        child: Scaffold(
+          appBar: TabBar(
+            unselectedLabelColor: Colors.grey,
+            indicatorSize: TabBarIndicatorSize.tab,
+            indicator: BoxDecoration(
+              color: const Color.fromARGB(255, 251, 129, 111),
+            ),
+            tabs: const <Widget>[
+              Tab(
+                text: "Proteins",
+              ),
+              Tab(
+                text: "Fats/Oils",
+              ),
+              Tab(
+                text: "Carbs",
+              ),
+              Tab(
+                text: "Fruits/Veg",
+              )
+            ],
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              Center(child: Icon(Icons.set_meal)),
+              Center(child: Icon(Icons.water_drop)),
+              Center(
+                child: Icon(Icons.rice_bowl),
+              ),
+              Center(
+                child: Icon(Icons.grass),
+              )
+            ],
+          ),
+        ));
   }
 }
