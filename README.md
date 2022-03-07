@@ -15,6 +15,13 @@ Sigla is your personal nutrition tracker for your kids, so you can keep them hea
 
 3. **Food database** - Know what you need to buy, before you even buy it. Our database provides you with the right choices that'll fill the stomach, but not empty the wallet.
 
+## Installation
+
+1.Go to the `releases` tab of this repository or click this [link](https://github.com/mattalejo/sigla/releases)
+
+2. Click on `v1.0.0`.
+
+3. Click on `sigla-app-armeabi-v7a-release.apk` to download.
 
 ## Sustainable Development Goals Tackled
 - SDG 2
